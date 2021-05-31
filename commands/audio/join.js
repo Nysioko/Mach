@@ -1,6 +1,6 @@
 module.exports = {
     name: "join",
-    description: "join",
+    description: "joining a vocal channel",
     execute(client, message, args, command) {
         if (message.guild === null) {
             return message.reply("I can't do that in private messages...");
