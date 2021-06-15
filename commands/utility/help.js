@@ -22,14 +22,24 @@ async function getFiles(path) {
     return path_array.length != 0 ? path_array : final_array;
 }
 
-async function help_command(message)
+async function help_command(message, args)
 {
     let commands_array = await getFiles("./commands/");
-    let final_message = "Here is a list of my commands :\n\n";
+    let final_message = null;
 
-    for (let index = 0; index < commands_array.length; index++) {
-        const element = require(`../../${commands_array[index]}`);
-        final_message += ("Name : " + element.name + "\nDescription : " + element.description + "\n\n");
+    if (args.length == 0) {
+        final_message = "Here is a list of my commands :\n\n";
+        for (let index = 0; index < commands_array.length; index++) {
+            const element = require(`../../${commands_array[index]}`);
+            final_message += ("Name : " + element.name + "\nDescription : " + element.description + "\n\n");
+        }
+    } else if (args.length == 1) {
+        final_message = "";
+        for (let index = 0; index < commands_array.length; index++) {
+            const element = require(`../../${commands_array[index]}`);
+            if (element.name === args[0])
+                final_message += ("Description : " + element.description);
+        }
     }
     message.channel.send(`${final_message}`);
 }
@@ -39,6 +49,6 @@ module.exports = {
     name: "help",
     description: "Help me, HELP ME, N**GA",
     execute(client, message, args, command) {
-        help_command(message);
+        help_command(message, args);
     }
 }
