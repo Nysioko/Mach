@@ -15,12 +15,11 @@ for (const folder of commandFolders) {
 	}
 }
 
-
 client.login(process.env.TOKEN);
 
 client.on("ready", () => {
     console.log("Bot is ready!");
-    client.user.setActivity("The Witcher 3: Wild Hunt", {
+    client.user.setActivity("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", {
         type: "PLAYING",
     });
 });
