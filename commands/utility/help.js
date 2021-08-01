@@ -31,7 +31,7 @@ async function help_command(message, args)
         final_message = "Here is a list of my commands :\n\n";
         for (let index = 0; index < commands_array.length; index++) {
             const element = require(`../../${commands_array[index]}`);
-            final_message += ("Name : " + element.name + "\nDescription : " + element.description + "\n\n");
+            final_message += ("Name : **" + element.name + "**\nDescription : " + element.description + "\n\n");
         }
     } else if (args.length == 1) {
         final_message = "";
